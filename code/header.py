@@ -8,12 +8,10 @@
 from reportlab.platypus import Paragraph
 from paragraphstyle import customerparagraphstyle
 from reportlab.lib.units import mm
+from reportlab.lib.units import mm, inch
+
 
 def header(canvas, doc):
-	width, heigth = doc.pagesize
-	styles = customerparagraphstyle()
-	print(styles['页眉'])
-	ptext = '技术规范书'
-	p = Paragraph(ptext, styles['页眉'])
-	p.wrapOn(canvas, width, heigth)
-	p.drawOn(canvas, 400, 800)
+    width, heigth = doc.pagesize
+    canvas.setFont('方正仿宋', 10.5)  # 设置字体
+    canvas.drawRightString(width - 30 * mm, 280 * mm, "技术规范书")

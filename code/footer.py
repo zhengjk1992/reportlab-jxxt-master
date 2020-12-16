@@ -7,16 +7,11 @@
 
 from reportlab.platypus import Paragraph
 from paragraphstyle import customerparagraphstyle
+from reportlab.lib.units import mm, inch
+
 
 def footer(canvas, doc):
-	width, heigth = doc.pagesize
-	styles = customerparagraphstyle()
-
-
-
-	ptext = str(canvas.getPageNumber())
-	p = Paragraph(ptext, styles['页脚'])
-	p.wrapOn(canvas, width, heigth)
-	p.drawOn(canvas, 400, 100)
-
-
+    width, heigth = doc.pagesize
+    canvas.setFont('方正仿宋', 10.5)  # 设置字体
+    # canvas.translate(inch, inch)
+    canvas.drawRightString(width / 2 - 1 * mm, 17.5 * mm, "{}".format(doc.page))
